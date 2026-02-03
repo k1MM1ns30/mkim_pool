@@ -163,7 +163,6 @@ header{
 
 @font-face {
     font-family: "VCRMono";
-    src: url("../assets/VCR_OSD_MONO_1.001.ttf") format("truetype");
-
+    src: url("../mkim_pool/assets/VCR_OSD_MONO_1.001.ttf") format("truetype");
 }
 
