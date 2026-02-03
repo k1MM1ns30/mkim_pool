@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.page-wrapper{
+    width:100%;
+    min-height: 100vh;   /* 화면 높이만큼 차지 */
+    position: relative;
+}
+
+.header{
+    position: fixed;
+    
+}
+
+.title{
+    font-family: "VCRMono";
+    color: rgb(0,0,0);
+    font-size: 30px;
+    text-decoration: none;
+    
+}
+
+.navbar{
+    display:flex;
+    position: relative; /*이게 있어야 이 안에 있는 요소가 이거 기준으로 패디이랑 마진 정함 이거 없으면 페이지 전체 기준으로 잡음*/
+    justify-content: flex-end;
+
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+
+
+    
+
+}
+
+.navbar .title{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    
+}
+
+.navbar .menubtn{
+    position: absolute;
+    font-family: "VCRMono";
+    color: rgb(0,0,0);
+    font-size: 30px;
+
+
+}
+
+.navbar .menubtn summary{ /*메뉴옆 화살표 없애줌*/
+  list-style: none;
+  cursor: pointer;
+}
+
+.menulist{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgb(0,0,255);
+    color: rgb(255,255,255);
+
+    
+
+}
+
+.menulist ul{
+    padding-left: 2em;
+    list-style: none;
+    font-size: 40px;
+    
+    line-height: 2em;
+}
+
+.menubtn[open] summary {
+  color: white;
+  position: relative;
+  z-index: 999; /* menulist 위에 뜨게 */
+
+}
+
+
+.canvas{
+  position: fixed;
+  inset: 0; /*이거댐에 캔버스가 웹페이지 전체영역쓰고있음*/
+  padding-left: 1em;
+  padding-right: 1em;
+
+}
+
+.imgs{
+  position: absolute;
+  inset: 0;
+}
+
+.imgs a{
+  position: absolute;
+  display: block;
+}
+
+.img1{
+    width: 130px;
+
+}
+.img2{
+    width: 90px;
+    
+}
+.img3{
+    width: 80px;
+    
+}
+.img4{
+    width: 100px;
+    
+}
+.img5{
+    width: 90px;
+    
+}
+.img6{
+    width: 100px;
+    
+}
+.img7{
+    width: 150px;
+    
+}
+
+.imgs img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img1{ left: 12vw;  top: 30vh; }
+.img2{ left: 25vw; top: 12vh; }
+.img3{ left: 30vw; top: 50vh;  }
+
+.img4{ left: 40vw; top: 70vh; }
+.img5{ left: 58vw; top: 40vh; }
+.img6{ left: 68vw; top: 25vh; }
+
+.img7{ left: 78vw; top: 40vh; }
+
+
+
+
+@font-face {
+    font-family: "VCRMono";
+    src: url("../pool/assets/VCR_OSD_MONO_1.001.ttf") format("truetype");
+
+}
+
