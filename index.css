@@ -102,6 +102,9 @@ header{
   padding-left: 1em;
   padding-right: 1em;
   
+  transform-style: preserve-3d;
+  will-change: transform;
+  
 
 }
 
@@ -117,30 +120,44 @@ header{
 
 .img1{
     width: 130px;
+    left: 12vw;
+    top: 30vh;
 
 }
 .img2{
     width: 90px;
+    left: 25vw;
+    top: 12vh;
     
 }
 .img3{
     width: 80px;
+    left: 30vw;
+    top: 50vh;
     
 }
 .img4{
     width: 100px;
+    left: 40vw;
+    top: 70vh;
     
 }
 .img5{
     width: 90px;
+    left: 58vw;
+    top: 40vh;
     
 }
 .img6{
     width: 100px;
+    left: 68vw;
+    top: 25vh;
     
 }
 .img7{
     width: 150px;
+    left: 78vw;
+    top: 40vh;
     
 }
 
@@ -150,15 +167,7 @@ header{
   display: block;
 }
 
-.img1{ left: 12vw;  top: 30vh; }
-.img2{ left: 25vw; top: 12vh; }
-.img3{ left: 30vw; top: 50vh;  }
 
-.img4{ left: 40vw; top: 70vh; }
-.img5{ left: 58vw; top: 40vh; }
-.img6{ left: 68vw; top: 25vh; }
-
-.img7{ left: 78vw; top: 40vh; }
 
 
 
