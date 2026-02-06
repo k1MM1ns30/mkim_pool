@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const stage = document.querySelector(".canvas");
+
+  const stage = document.querySelector(".canvas"); // 마우스 감지
+  const group = document.querySelector(".imgs");   // 실제 틸트 대상
   if (!stage) return;
 
-  const max = 18; // 틸트 세기(도)
+  const max = 30; // 틸트 세기(도)
 
   stage.addEventListener("mousemove", (e) => {
     const r = stage.getBoundingClientRect();
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ry = (x - 0.5) * (max * 2);
     const rx = -(y - 0.5) * (max * 2);
 
-    stage.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    stage.style.transform = `perspective(200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
   });
 
   stage.addEventListener("mouseleave", () => {
