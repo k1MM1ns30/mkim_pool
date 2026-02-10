@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    height: auto;
+
 }
 
 header{
@@ -36,7 +36,7 @@ p{
 .page-wrapper{
     width:100%;
     position: relative;
-    padding-bottom: 120vh;
+
 
 }
 
@@ -170,7 +170,7 @@ p{
 
     will-change: transform, left, top, width, height;
 
-    transition: transform 450ms ease, width 400ms ease, top 450ms ease, left 400ms ease, height 400ms ease;
+    transition: transform 550ms ease, width 500ms ease, top 550ms ease, left 500ms ease, height 500ms ease;
 }
 
 .img1{
@@ -204,10 +204,10 @@ body.is-scrolled .photo-wrap{
     transform: translate(0, -50%) scaleX(1);
 }
 
-body.is-scrolled .photo-wrap:hover{
+/* body.is-scrolled .photo-wrap:hover{
     width: 900px;
     transition: width 400ms ease;
-}
+} */
 
 
 .poolname{
@@ -272,7 +272,7 @@ body.is-scrolled .leftlist{
   position: absolute;      /* discript만 좌표로 배치 */
   left: 600px;
   top: 800px;
-  width: 1000px;
+  width: 1100px;
 
   display: flex;
   flex-direction: column;
