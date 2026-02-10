@@ -114,6 +114,11 @@ p{
     line-height: 2em;
 }
 
+.menulist a{
+    color: inherit;   
+    text-decoration: none;
+}
+
 .menubtn[open] summary {
   color: white;
   position: relative;
