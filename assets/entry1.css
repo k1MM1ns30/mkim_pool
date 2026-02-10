@@ -228,6 +228,7 @@ body.is-scrolled .photo-wrap{
     transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease, opacity 300ms ease;
     z-index: -1;
     line-height: 0.6;
+    line-height: 1em;
     margin-top: 20px;
 
     opacity: 0;
