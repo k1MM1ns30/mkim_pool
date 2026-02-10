@@ -99,9 +99,36 @@ header{
 }
 
 .menulist a{
+    display: block;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    height: 64px;          /* ✅ hover 최대 크기까지 커버 */
+    line-height: 64px;
+
     color: inherit;   
     text-decoration: none;
 }
+
+.menulist a:hover{
+    font-family: "Mine";
+}
+
+.pagediscript{
+    position: absolute;
+
+
+    font-family: "VCRMono";
+    font-size: 15px;
+    color: rgb(255,255,255);
+
+    padding-left: 80px;
+    bottom: 50px;
+
+    line-height: 2em;
+}
+
 
 
 .canvas{
@@ -195,4 +222,11 @@ header{
     font-family: "VCRMono";
     src: url("assets/VCR_OSD_MONO_1.001.ttf") format("truetype");
 }
+
+
+@font-face {
+    font-family: "Mine";
+    src: url("assets/Minecraft\ 2.ttf") format("truetype");
+}
+
 
