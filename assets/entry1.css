@@ -202,7 +202,7 @@ body.is-scrolled .city{
 
 body.is-scrolled .photo-wrap{
     position: fixed;
-    top: 30px;          /* 위쪽으로 살짝 */
+    top: 50px;          /* 위쪽으로 살짝 */
     width: 500px;        /* 작게 */
 
     left: 500px;               
@@ -246,24 +246,46 @@ body.is-scrolled .poolname{
 
 
 .leftlist{
-  position: absolute;
+    position: absolute;
 
-  left: 30px;
-  bottom: -200px;  
+    left: 30px;
+    bottom: -200px;  
 
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
 
-  transition: transform 450ms ease, opacity 450ms ease, bottom 450ms ease;
-  z-index: 50;
+
+    transition: transform 450ms ease, opacity 450ms ease, bottom 450ms ease;
+    z-index: 50;
 }
 .leftlist a{
-  font-family: "VCRMono";
-  font-size: 25px;       /* 예시 느낌 */
-  color: #000;
-  text-decoration: none;
+    display: block;
+
+    font-family: "VCRMono";
+    font-size: 25px;       /* 예시 느낌 */
+    color: #000;
+    text-decoration: none;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    height: 44px;          /* ✅ hover 최대 크기까지 커버 */
+    line-height: 44px;     /* ✅ baseline 흔들림 방지 */
+
+    transition: transform 200ms ease, color 200ms ease, font-family 200ms ease;
+    transform-origin: left center; /* ✅ 커질 때 왼쪽 기준 */
+    will-change: transform;
+    
 }
+
+.leftlist a:hover{
+    font-family: "Mine";
+    transform: scale(1.4);
+    color: rgb(0, 0, 255);
+
+}
+
+
 
 /* 스크롤 후 등장 */
 body.is-scrolled .leftlist{
@@ -274,57 +296,63 @@ body.is-scrolled .leftlist{
 }
 
 .discript{
-  position: absolute;      /* discript만 좌표로 배치 */
-  left: 600px;
-  top: 800px;
-  width: 1100px;
+    position: absolute;      /* discript만 좌표로 배치 */
+    left: 600px;
+    top: 800px;
+    width: 1100px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 
-  opacity: 0;
-  transform: translateY(50%);
-  transition: transform 450ms ease, opacity 450ms ease;
-  z-index: 50;
+    opacity: 0;
+    transform: translateY(50%);
+    transition: transform 450ms ease, opacity 450ms ease;
+    z-index: 50;
 }
 
 body.is-scrolled .discript{
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .discript .d1{
-  align-self: flex-start;
-  margin-bottom: 0;
-  width: 900px;     /* 기준선 */
-  padding: 20px;
-  line-height: 2em;
-  background: white;
+    align-self: flex-start;
+    margin-bottom: 0;
+    width: 900px;     /* 기준선 */
+    padding: 20px;
+    line-height: 2em;
+    background: white;
   
 }
 
 .discript .d2{
-  align-self: flex-end; 
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 800px;   /* 👉 더 오른쪽 */
-  padding: 20px;
-  line-height: 2em;
-  background: white;
+    align-self: flex-end; 
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 800px;   /* 👉 더 오른쪽 */
+    padding: 20px;
+    line-height: 2em;
+    background: white;
 }
 
 .discript .d3{
-  align-self: flex-end;   /* 👈 컨테이너의 오른쪽 끝 */
-  margin-top: 0;
-  width: 600px;
-  padding: 20px;
-  line-height: 2em;
-  background: white;
+    align-self: flex-end;   /* 👈 컨테이너의 오른쪽 끝 */
+    margin-top: 0;
+    width: 600px;
+    padding: 20px;
+    line-height: 2em;
+    background: white;
 }
 
 @font-face {
     font-family: "VCRMono";
     src: url("../assets/VCR_OSD_MONO_1.001.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "Mine";
+    src: url("../assets/Minecraft\ 2.ttf") format("truetype");
+}
+
 
