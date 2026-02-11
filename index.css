@@ -95,7 +95,7 @@ header{
     background-color: rgb(0,0,255);
     color: rgb(255,255,255);
 
-    height: calc(var(--real-vh) * 100);
+    height: calc(var(--real-vh, 1vh) * 100); /* ✅ var 없으면 1vh 사용 */
 
     
 
@@ -155,7 +155,7 @@ header{
   position: fixed;
   inset: 0; /*이거댐에 캔버스가 웹페이지 전체영역쓰고있음*/
 
-  perspective: 100%; 
+  perspective: 100vh; 
 
   
   transform-style: preserve-3d;
