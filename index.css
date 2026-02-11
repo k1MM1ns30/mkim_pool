@@ -246,14 +246,14 @@ header{
     font-size: 20px;
     }
     .imgs a:hover{
-    transform: scale(4);
+    transform: scale(1.5);
     filter: saturate(2) brightness(1);
     }
 }
 
 @media (hover: hover){
   .imgs a:hover{
-    transform: scale(4);
+    transform: scale(1.5);
     filter: saturate(2) brightness(1);
   }
 }
