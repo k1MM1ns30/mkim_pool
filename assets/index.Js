@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
           this.classList.add("is-active");
           activeLink = this;
         } else {
-          // 두 번째 탭이면 이동 허용
+          this.classList.remove("is-active");
           activeLink = null;
         }
 
@@ -76,6 +76,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
   });
+
+  // ✅ 이미지 밖 탭하면 해제
+  document.addEventListener("click", (e) => {
+    if (window.matchMedia("(hover: none)").matches) {
+      if (!e.target.closest(".imgs a")) {
+        links.forEach(l => l.classList.remove("is-active"));
+        activeLink = null;
+      }
+    }
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.matchMedia("(hover: none)").matches) {
+      links.forEach(l => l.classList.remove("is-active"));
+      activeLink = null;
+    }
+  }, { passive: true });
+
+
+  
 
 
 
