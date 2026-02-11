@@ -181,7 +181,7 @@ p{
 
 
 
-    transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease;
+    transition: transform 550ms ease, font-size 550ms ease, top 550ms ease, left 550ms ease;
     z-index: 10;
     line-height: 0.6;
     margin: 0;
@@ -204,7 +204,7 @@ p{
 
     will-change: transform, left, top, width, height;
 
-    transition: transform 550ms ease, width 500ms ease, top 550ms ease, left 500ms ease, height 500ms ease;
+    transition: transform 550ms ease, width 550ms ease, top 550ms ease, left 550ms ease, height 550ms ease;
 }
 
 .img1{

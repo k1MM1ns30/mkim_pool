@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const stage = document.querySelector(".canvas");
   if (!stage) return;
 
-  const max = 25;          // 회전 세기 (30은 꽤 과함)
+  const max = 30;          // 회전 세기 (30은 꽤 과함)
   const persp = 1000;      // 200 -> 너무 강함 (800~1400 추천)
 
   let targetRX = 0, targetRY = 0; // 목표값
