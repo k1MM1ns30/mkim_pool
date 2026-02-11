@@ -95,9 +95,9 @@ header{
     background-color: rgb(0,0,255);
     color: rgb(255,255,255);
 
+    padding-bottom: env(safe-area-inset-bottom);
     overflow-y: auto;
 
-    
 
 }
 
@@ -135,7 +135,7 @@ header{
 }
 
 .pagediscript{
-    position: fixed;
+    position: absolute;
 
 
     font-family: "VCRMono";
@@ -147,6 +147,8 @@ header{
     bottom: 5%;
 
     line-height: 2em;
+
+    bottom: calc(16px + env(safe-area-inset-bottom));
 }
 
 
