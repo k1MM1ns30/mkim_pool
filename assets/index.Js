@@ -53,6 +53,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // 여기선 그냥 계속 돌려도 부담 적음. (원하면 stop 로직도 만들어줄게)
   });
 
+  const links = document.querySelectorAll(".imgs a");
+  let activeLink = null;
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+
+      // hover 없는 디바이스(모바일)만 적용
+      if (window.matchMedia("(hover: none)").matches) {
+
+        if (activeLink !== this) {
+          e.preventDefault(); // 첫 탭에서는 이동 막기
+          links.forEach(l => l.classList.remove("is-active"));
+          this.classList.add("is-active");
+          activeLink = this;
+        } else {
+          // 두 번째 탭이면 이동 허용
+          activeLink = null;
+        }
+
+      }
+
+    });
+  });
+
 
 
 });

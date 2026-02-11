@@ -248,7 +248,20 @@ header{
     .imgs a:hover{
     transform: scale(4);
     filter: saturate(2) brightness(1);
+    }
 }
+
+@media (hover: hover){
+  .imgs a:hover{
+    transform: scale(4);
+    filter: saturate(2) brightness(1);
+  }
+}
+
+/* 모바일에서 JS가 붙여줄 클래스 */
+.imgs a.is-active{
+  transform: scale(4);
+  filter: saturate(2) brightness(1);
 }
 
 
