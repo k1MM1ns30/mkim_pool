@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+// ✅ 스크롤하면 해제
   window.addEventListener("scroll", () => {
     if (window.matchMedia("(hover: none)").matches) {
       links.forEach(l => l.classList.remove("is-active"));
