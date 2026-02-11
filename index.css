@@ -253,6 +253,7 @@ header{
     .imgs a.is-active{
     transform: scale(4);
     filter: saturate(2) brightness(1);
+    }
 }
 
 
