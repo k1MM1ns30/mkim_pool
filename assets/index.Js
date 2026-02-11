@@ -8,98 +8,82 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('resize', setRealVh);
   window.addEventListener('orientationchange', setRealVh);
 
-
-
-
+  // ✅ 3D는 canvas가 있을 때만
   const stage = document.querySelector(".canvas");
-  if (!stage) return;
+  if (stage) {
+    const max = 30;
+    const persp = 1000;
 
-  const max = 30;          // 회전 세기 (30은 꽤 과함)
-  const persp = 1000;      // 200 -> 너무 강함 (800~1400 추천)
+    let targetRX = 0, targetRY = 0;
+    let currentRX = 0, currentRY = 0;
+    let rafId = null;
 
-  let targetRX = 0, targetRY = 0; // 목표값
-  let currentRX = 0, currentRY = 0; // 현재값(부드럽게 따라감)
-  let rafId = null;
+    function animate() {
+      const ease = 0.14;
+      currentRX += (targetRX - currentRX) * ease;
+      currentRY += (targetRY - currentRY) * ease;
 
-  function animate() {
-    // easing(부드럽게 따라가기): 0.12~0.2 사이 추천
-    const ease = 0.14;
-    currentRX += (targetRX - currentRX) * ease;
-    currentRY += (targetRY - currentRY) * ease;
+      stage.style.transform =
+        `perspective(${persp}px) rotateX(${currentRX}deg) rotateY(${currentRY}deg)`;
 
-    stage.style.transform =
-      `perspective(${persp}px) rotateX(${currentRX}deg) rotateY(${currentRY}deg)`;
+      rafId = requestAnimationFrame(animate);
+    }
 
-    rafId = requestAnimationFrame(animate);
+    stage.addEventListener("mousemove", (e) => {
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+
+      targetRY = (x - 0.5) * (max * 2);
+      targetRX = -(y - 0.5) * (max * 2);
+
+      if (!rafId) rafId = requestAnimationFrame(animate);
+    });
+
+    stage.addEventListener("mouseleave", () => {
+      targetRX = 0;
+      targetRY = 0;
+    });
   }
 
-  stage.addEventListener("mousemove", (e) => {
-    const r = stage.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width;
-    const y = (e.clientY - r.top) / r.height;
-
-    targetRY = (x - 0.5) * (max * 2);
-    targetRX = -(y - 0.5) * (max * 2);
-
-    // 애니메이션 루프가 아직 안 돌고 있으면 시작
-    if (!rafId) rafId = requestAnimationFrame(animate);
-  });
-
-  stage.addEventListener("mouseleave", () => {
-    targetRX = 0;
-    targetRY = 0;
-
-    // 살짝 있다가(값이 0으로 거의 수렴하면) 멈추게 하고 싶으면 아래처럼
-    // 여기선 그냥 계속 돌려도 부담 적음. (원하면 stop 로직도 만들어줄게)
-  });
-
+  // ✅ 2탭 로직은 canvas 유무랑 상관없이 실행
   const links = document.querySelectorAll(".imgs a");
+  if (!links.length) return;
+
   let activeLink = null;
+  const isTouch = window.matchMedia("(hover: none)").matches;
 
   links.forEach(link => {
     link.addEventListener("click", function(e) {
+      if (!isTouch) return;
 
-      // hover 없는 디바이스(모바일)만 적용
-      if (window.matchMedia("(hover: none)").matches) {
-
-        if (activeLink !== this) {
-          e.preventDefault(); // 첫 탭에서는 이동 막기
-          links.forEach(l => l.classList.remove("is-active"));
-          this.classList.add("is-active");
-          activeLink = this;
-        } else {
-          this.classList.remove("is-active");
-          activeLink = null;
-        }
-
+      if (activeLink !== this) {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove("is-active"));
+        this.classList.add("is-active");
+        activeLink = this;
+      } else {
+        this.classList.remove("is-active");
+        activeLink = null; // 두 번째 탭은 이동 허용
       }
-
     });
   });
 
-  // ✅ 이미지 밖 탭하면 해제
-  document.addEventListener("click", (e) => {
-    if (window.matchMedia("(hover: none)").matches) {
-      if (!e.target.closest(".imgs a")) {
-        links.forEach(l => l.classList.remove("is-active"));
-        activeLink = null;
-      }
-    }
-  });
-
-// ✅ 스크롤하면 해제
-  window.addEventListener("scroll", () => {
-    if (window.matchMedia("(hover: none)").matches) {
+  // ✅ 바깥 탭 해제 (캡처링으로 더 안정적으로)
+  document.addEventListener("pointerdown", (e) => {
+    if (!isTouch) return;
+    if (!e.target.closest(".imgs a")) {
       links.forEach(l => l.classList.remove("is-active"));
       activeLink = null;
     }
+  }, true);
+
+  // ✅ 스크롤하면 해제
+  window.addEventListener("scroll", () => {
+    if (!isTouch) return;
+    links.forEach(l => l.classList.remove("is-active"));
+    activeLink = null;
   }, { passive: true });
 
-
-  
-
-
-
 });
-
 
