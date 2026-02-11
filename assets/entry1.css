@@ -21,14 +21,13 @@ h1{
 
 h2{
     font-family: "VCRMono";
-    color: rgb(0, 0, 255);
+    
     
 }
 
 p{
     font-family: "VCRMono";
-    color: rgb(0, 0, 255);
-    font-size: 20px;
+    
 
 
 }
@@ -336,6 +335,9 @@ body.is-scrolled .leftlist{
     transform: translateY(50%);
     transition: transform 450ms ease, opacity 450ms ease;
     z-index: 50;
+
+    color: rgb(0, 0, 255);
+    font-size: 20px;
 }
 
 body.is-scrolled .discript{
