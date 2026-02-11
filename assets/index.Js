@@ -40,4 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // 살짝 있다가(값이 0으로 거의 수렴하면) 멈추게 하고 싶으면 아래처럼
     // 여기선 그냥 계속 돌려도 부담 적음. (원하면 stop 로직도 만들어줄게)
   });
+
+  function setRealVh() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--real-vh', `${vh}px`);
+  }
+
+  setRealVh();
+  window.addEventListener('resize', setRealVh);
+  window.addEventListener('orientationchange', setRealVh);
+
+
+
 });
+
+
