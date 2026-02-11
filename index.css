@@ -240,7 +240,7 @@ header{
         position: fixed;   /* ⭐ absolute 말고 fixed */
         left: 0;
         right: 0;
-        bottom: 20px;      /* 그냥 단순하게 */
+        bottom: 10%;      /* 그냥 단순하게 */
         padding-left: 5%;
         padding-right: 5%;
         font-size: 8px;
