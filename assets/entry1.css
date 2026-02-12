@@ -416,7 +416,7 @@ body.is-scrolled .discript{
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
 
-    width: 68vw;
+    width: 80vw;
     }
 
     body.is-scrolled .discript{
@@ -426,9 +426,14 @@ body.is-scrolled .discript{
     }
     body.is-scrolled .poolname{
         top: 10vh;
-        font-size: 8px;
+        font-size: 15px;
 
     }
+    
+    p{
+        font-size: 10px;
+    }
+
 
 
 
