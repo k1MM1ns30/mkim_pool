@@ -406,7 +406,7 @@ body.is-scrolled .discript{
 
 @media (max-width: 480px){
     body.is-scrolled .photo-wrap{
-    top: 10vh;          /* 위쪽으로 살짝 */
+    top: 18vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
@@ -420,7 +420,7 @@ body.is-scrolled .discript{
     font-size: 5px;
     }
     body.is-scrolled .poolname{
-        top: 5vh;
+        top: 13vh;
 
     }
 
