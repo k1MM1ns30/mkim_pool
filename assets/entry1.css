@@ -414,7 +414,7 @@ body.is-scrolled .discript{
     }
 
     body.is-scrolled .photo-wrap{
-    top: 22vh;          /* 위쪽으로 살짝 */
+    top: 24vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
@@ -422,7 +422,7 @@ body.is-scrolled .discript{
     width: 85vw;
     }
     body.is-scrolled .city{
-        font-size: 60px;
+        font-size: 70px;
 
     }
 
@@ -435,7 +435,7 @@ body.is-scrolled .discript{
 
     body.is-scrolled .poolname{
         top: 15vh;
-        font-size: 30px;
+        font-size: 28px;
 
     }
     
