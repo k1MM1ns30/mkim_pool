@@ -1,6 +1,6 @@
 body{
     margin: 0;
-
+    overflow-x: hidden;
 
 }
 
@@ -338,6 +338,7 @@ body.is-scrolled .leftlist{
 .discript{
     position: absolute;      /* discript만 좌표로 배치 */
     left: 40vw;
+    right: 0;
     top: 84vh;
     width: 60vw;
 
@@ -423,7 +424,9 @@ body.is-scrolled .discript{
     top: 84vh;
     width: 80vw;
     font-size: 5px;
+    right: 0;
     }
+    
     body.is-scrolled .poolname{
         top: 10vh;
         font-size: 15px;
