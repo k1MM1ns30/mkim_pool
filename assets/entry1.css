@@ -405,6 +405,11 @@ body.is-scrolled .discript{
 }
 
 @media (max-width: 480px){
+    .canvas{
+        width: 100vw;
+        height: 100vh;
+    }
+
     body.is-scrolled .photo-wrap{
     top: 15vh;          /* 위쪽으로 살짝 */
 
