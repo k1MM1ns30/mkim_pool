@@ -437,6 +437,10 @@ body.is-scrolled .discript{
         font-size: 28px;
 
     }
+
+    .city{
+        top: 35%;
+    }
     
     p{
         font-size: 10px;
