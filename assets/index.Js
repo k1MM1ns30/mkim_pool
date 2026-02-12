@@ -84,6 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(l => l.classList.remove("is-active"));
     activeLink = null;
   }, { passive: true });
+  const lizard = document.querySelector(".lizard");
+
+lizard.addEventListener("click", () => {
+  lizard.classList.toggle("is-visible");
+});
+
+
+  
+
+  
 
 });
 

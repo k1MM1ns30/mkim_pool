@@ -25,6 +25,11 @@ header{
   z-index: 1000;
 }
 
+p{
+    font-family: "VCRMono";
+    color: rgb(0, 0, 255);
+}
+
 .page-wrapper{
     width:100%;
     min-height: 100vh;   /* 화면 높이만큼 차지 */
@@ -161,6 +166,28 @@ header{
     transform: translateZ(0); /* GPU 타게 하는 흔한 트릭 */
     
 
+}
+
+.lizard{
+    position: fixed;
+    width: clamp(60px, 9vw, 9vw);
+    left: 5%;
+    bottom: 5%;
+
+    opacity: 0;
+    transition: opacity 500ms ease;
+    cursor: pointer; /* 클릭 가능 표시 */
+
+    filter: drop-shadow(0 0 1em rgba(52, 255, 245, 0.833));
+}
+
+.lizard.is-visible{
+    opacity: 1;
+}
+
+
+.lizard img{
+    width: 100%;
 }
 
 .imgs{
