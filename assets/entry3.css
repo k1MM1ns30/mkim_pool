@@ -1,7 +1,11 @@
 body{
     margin: 0;
+    overflow-x: hidden;
 
 }
+
+.discript{ outline: 2px solid red; }
+canvas, .canvas{ outline: 2px solid lime; }
 
 header{
   position: fixed;
@@ -12,6 +16,14 @@ header{
   font-family:"VCRMono";
 
 }
+
+.page-wrapper{
+    width:100%;
+    min-height: 100vh;   /* 화면 높이만큼 차지 */
+    position: relative;
+}
+
+
 
 h1{
     font-family: "VCRMono"; /* 1번처럼 크게 */
@@ -33,19 +45,10 @@ p{
 
 }
 
-.page-wrapper{
-    width:100%;
-    position: relative;
-
-
-}
 
 
 
-.header{
-    position: fixed;
-    
-}
+
 
 .title{
     font-family: "VCRMono";
@@ -64,13 +67,9 @@ p{
     padding-left: 1em;
     padding-top: 0.5em;
     padding-bottom: 1em;
-
-
-
-    
+  
 
 }
-
 .navbar .title{
     position: absolute;
     left:50%;
@@ -89,7 +88,7 @@ p{
 
 .navbar .menubtn summary{ /*메뉴옆 화살표 없애줌*/
   list-style: none;
-  cursor: pointer;
+
 }
 
 .menulist{
@@ -102,12 +101,15 @@ p{
     background-color: rgb(0,0,255);
     color: rgb(255,255,255);
 
+    height: calc(var(--real-vh, 1vh) * 100); /* ✅ var 없으면 1vh 사용 */
+
     
 
 }
 
 .menulist ul{
-    padding-left: 2em;
+    padding-left: 5%;
+    padding-right: 2em;
     list-style: none;
     font-size: 40px;
     
@@ -127,11 +129,8 @@ p{
 .menulist a{
     display: block;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    height: 64px;          /* ✅ hover 최대 크기까지 커버 */
-    line-height: 64px;
+    height: 2em;          /* ✅ hover 최대 크기까지 커버 */
+    line-height: 2em;
 
     color: inherit;   
     text-decoration: none;
@@ -149,10 +148,15 @@ p{
     font-size: 15px;
     color: rgb(255,255,255);
 
-    padding-left: 80px;
-    bottom: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    bottom: 5%;
 
     line-height: 2em;
+}
+
+.pagediscript h2{
+    color: rgb(255,255,255);
 }
 
 
@@ -165,6 +169,7 @@ p{
   position: relative;
   inset: 0;
   min-height: 100vh;
+  width: 100%;
 }
 
 
@@ -172,39 +177,47 @@ p{
 
 
 .city{
-    font-size: 220px;
+    font-size: clamp(12px, 15vw, 15vw);
 
 
     position: absolute;
-    top: 320px;
-    left: 30px;
+    top: 40vh;
+    left: 2vw;
 
-
-
-    transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease;
+    transition: transform 550ms ease, font-size 550ms ease, top 550ms ease, left 550ms ease;
     z-index: 10;
     line-height: 0.6;
     margin: 0;
 
-
-
 }
+
+body.is-scrolled .city{
+    position: fixed;
+    top: 5vh;          /* 위로 */
+    font-size: clamp(50px, 6vw, 6vw);
+
+
+    color: rgb(0,0,255);
+}
+
+
 
 /* 이미지 큰 상태(1번) */
 .photo-wrap{
     position: absolute;
     left: 50%;
-    top: 270px;
+    top: 30vh;
     transform: translate(-50%, -50%) scaleX(1.3) scaleY(0.7);
 
 
-    width: 980px;           /* 1번: 크게 */
+
+    width: 58vw;           /* 1번: 크게 */
     max-width: 75vw;
     z-index: 5;
 
     will-change: transform, left, top, width, height;
 
-    transition: transform 550ms ease, width 500ms ease, top 550ms ease, left 500ms ease, height 500ms ease;
+    transition: transform 550ms ease, width 550ms ease, top 550ms ease, left 550ms ease, height 550ms ease;
 }
 
 .img1{
@@ -212,30 +225,21 @@ p{
     display: block;
     width: 100%;
     height: auto;
-    border: 10px solid blue;
-    border-radius: 7px;
+    border: 0.7em solid blue;
+    border-radius: 0.5em;
     box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.815);
     z-index: 0;
 }
 
 
-
-
-body.is-scrolled .city{
-    position: fixed;
-    top: 50px;          /* 위로 */
-    font-size: 100px; /* 작게 */
-
-    color: rgb(0,0,255);
-}
-
 body.is-scrolled .photo-wrap{
     position: fixed;
-    top: 50px;          /* 위쪽으로 살짝 */
-    width: 500px;        /* 작게 */
+    top: 5vh;          /* 위쪽으로 살짝 */
 
-    left: 500px;               
+    left: max(200px, 30vw);            
     transform: translate(0, -50%) scaleX(1);
+
+    width: clamp(40vw, 30vw, 30vw);
 }
 
 /* body.is-scrolled .photo-wrap:hover{
@@ -244,20 +248,23 @@ body.is-scrolled .photo-wrap{
 } */
 
 
-.poolname{
-    font-size: 100px;
 
+
+
+.poolname{
+
+    font-size: clamp(10px, 5vw, 5vw);
 
     position: absolute;
-    top: 500px;
-    left: 40px;
+    top: 30vh;
+    left: 2vw;
 
 
 
     transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease, opacity 300ms ease;
     z-index: -1;
+    line-height: 0.6;
     line-height: 1em;
-    margin-top: 20px;
 
     opacity: 0;
 
@@ -265,12 +272,12 @@ body.is-scrolled .photo-wrap{
 
 body.is-scrolled .poolname{
     position: fixed;
-    top: 150px;          
-    font-size: 30px; 
+    top: 11.5vh;      
+
+    font-size: clamp(15px, 1.7vw, 1.7vw);
 
     color: rgb(0, 0, 0);
     opacity: 100%;;
-
 
 }
 
@@ -278,29 +285,30 @@ body.is-scrolled .poolname{
 .leftlist{
     position: absolute;
 
-    left: 30px;
-    bottom: -200px;  
+    left: 2vw;
+    bottom: 2vh;  
 
     display: flex;
     flex-direction: column;
 
-
+    transform: translateY(40vh);
     transition: transform 450ms ease, opacity 450ms ease, bottom 450ms ease;
     z-index: 50;
 }
+
 .leftlist a{
     display: block;
 
     font-family: "VCRMono";
-    font-size: 25px;       /* 예시 느낌 */
+    font-size: clamp(15px, 1.3vw, 1.3vw);       /* 예시 느낌 */
     color: #000;
     text-decoration: none;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 
-    height: 44px;          /* ✅ hover 최대 크기까지 커버 */
-    line-height: 44px;     /* ✅ baseline 흔들림 방지 */
+    height: 2em;          /* ✅ hover 최대 크기까지 커버 */
+    line-height: 2em;     /* ✅ baseline 흔들림 방지 */
 
     transition: transform 200ms ease, color 200ms ease, font-family 200ms ease;
     transform-origin: left center; /* ✅ 커질 때 왼쪽 기준 */
@@ -315,28 +323,33 @@ body.is-scrolled .poolname{
 
 }
 
-
-
-/* 스크롤 후 등장 */
 body.is-scrolled .leftlist{
     position: fixed;
     opacity: 1;
-    left: 30px;
-    bottom: 40px;
+    left: 2vw;
+    bottom: 2vh;
+
+    transform: translateY(0);
 }
+
+
+
 
 .discript{
     position: absolute;      /* discript만 좌표로 배치 */
-    left: 600px;
-    top: 800px;
-    width: 1100px;
+    left: 40vw;
+    right: 0;
+    top: 84vh;
+    width: auto;          /* ✅ */
+    max-width: 60vw;
+
 
     display: flex;
     flex-direction: column;
     gap: 0px;
 
     opacity: 0;
-    transform: translateY(50%);
+    transform: translateY(40vh);
     transition: transform 450ms ease, opacity 450ms ease;
     z-index: 50;
 }
@@ -349,8 +362,8 @@ body.is-scrolled .discript{
 .discript .d1{
     align-self: flex-start;
     margin-bottom: 0;
-    width: 900px;     /* 기준선 */
-    padding: 20px;
+    width: 90%;     /* 기준선 */
+    padding: 2%;
     line-height: 2em;
     background: white;
   
@@ -360,8 +373,8 @@ body.is-scrolled .discript{
     align-self: flex-end; 
     margin-top: 0;
     margin-bottom: 0;
-    width: 800px;   /* 👉 더 오른쪽 */
-    padding: 20px;
+    width: 80%;   /* 👉 더 오른쪽 */
+    padding: 2%;
     line-height: 2em;
     background: white;
 }
@@ -369,11 +382,74 @@ body.is-scrolled .discript{
 .discript .d3{
     align-self: flex-end;   /* 👈 컨테이너의 오른쪽 끝 */
     margin-top: 0;
-    width: 600px;
-    padding: 20px;
+    width: 60%;
+    padding: 2%;
     line-height: 2em;
     background: white;
 }
+
+@media (max-width: 800px){
+    .pagediscript{
+        font-size: 8px;
+    }
+    .menulist ul{
+    font-size: 20px;
+    }
+    .imgs a:hover{
+    transform: scale(1.5);
+    filter: saturate(2) brightness(1);
+    }
+
+    .imgs a.is-active{
+    transform: scale(4);
+    filter: saturate(2) brightness(1);
+    }
+
+}
+
+@media (max-width: 480px){
+    .canvas{
+        width: 100%;
+        height: 100vh;
+    }
+
+    body.is-scrolled .photo-wrap{
+    top: 35vh;          /* 위쪽으로 살짝 */
+
+    left: 2vw;            
+    transform: translate(0, -50%) scaleX(1);
+
+    width: 85vw;
+    }
+    body.is-scrolled .city{
+        font-size: 60px;
+
+    }
+
+    body.is-scrolled .discript{
+    top: 84vh;
+    width: 80vw;
+    font-size: 5px;
+    right: 0;
+    }
+
+    body.is-scrolled .poolname{
+        top: 25vh;
+        font-size: 30px;
+
+    }
+    
+    p{
+        font-size: 10px;
+    }
+
+
+
+
+
+}
+
+
 
 @font-face {
     font-family: "VCRMono";
