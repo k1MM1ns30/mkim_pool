@@ -404,7 +404,7 @@ body.is-scrolled .discript{
 
 }
 
-@media (max-width: 600px){
+@media (max-width: 700px){
     .canvas{
         width: 100vw;
         height: 100vh;
