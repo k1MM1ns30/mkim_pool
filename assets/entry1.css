@@ -408,7 +408,7 @@ body.is-scrolled .discript{
 }
 
 @media (max-width: 480px){
-    .body.is-scrolled .photo-wrap{
+    body.is-scrolled .photo-wrap{
     top: 30vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
@@ -416,7 +416,7 @@ body.is-scrolled .discript{
 
     width: 60vw;
     }
-    .body.is-scrolled .discript{
+    body.is-scrolled .discript{
     top: 84vh;
     width: 70vw;
     font-size: 10px;
