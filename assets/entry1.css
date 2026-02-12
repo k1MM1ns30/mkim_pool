@@ -406,7 +406,7 @@ body.is-scrolled .discript{
 
 @media (max-width: 480px){
     body.is-scrolled .photo-wrap{
-    top: 15vh;          /* 위쪽으로 살짝 */
+    top: 10vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
