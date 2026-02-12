@@ -417,12 +417,13 @@ body.is-scrolled .discript{
     body.is-scrolled .discript{
     top: 84vh;
     width: 70vw;
-    font-size: 10px;
+    font-size: 5px;
     }
     body.is-scrolled .poolname{
         top: 5vh;
 
     }
+
 
 
 }
