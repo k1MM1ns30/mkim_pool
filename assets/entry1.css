@@ -422,6 +422,7 @@ body.is-scrolled .discript{
     width: 85vw;
     }
     body.is-scrolled .city{
+        top: 8vh;
         font-size: 70px;
 
     }
