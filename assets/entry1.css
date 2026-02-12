@@ -414,7 +414,7 @@ body.is-scrolled .discript{
     }
 
     body.is-scrolled .photo-wrap{
-    top: 21vh;          /* 위쪽으로 살짝 */
+    top: 22vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
