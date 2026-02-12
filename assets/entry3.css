@@ -4,6 +4,31 @@ body{
 
 }
 
+html, body{
+  cursor: url("../assets/pointer3.png") 64 64, auto;
+}
+
+/* 클릭 중일 때 전체 커서 변경 */
+body.is-clicking,
+body.is-clicking *{
+  cursor: url("../assets/pointer_click3.png") 64 64, auto !important;
+}
+
+header, .navbar, .page-wrapper, .menulist{
+  cursor: url("../assets/pointer3.png") 64 64, auto;
+}
+
+a, summary, button{
+  cursor: url("../assets/pointer3.png") 64 64, pointer;
+}
+
+/* canvas 위에서도 동일하게 */
+canvas, .canvas, .imgs, .imgs *{
+  cursor: inherit;
+}
+
+
+
 
 header{
   position: fixed;

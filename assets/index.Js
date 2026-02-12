@@ -90,6 +90,18 @@ lizard.addEventListener("click", () => {
   lizard.classList.toggle("is-visible");
 });
 
+document.addEventListener("pointerdown", () => {
+  document.body.classList.add("is-clicking");
+});
+
+document.addEventListener("pointerup", () => {
+  document.body.classList.remove("is-clicking");
+});
+
+document.addEventListener("pointercancel", () => {
+  document.body.classList.remove("is-clicking");
+});
+
 
   
 
