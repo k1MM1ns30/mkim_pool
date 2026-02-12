@@ -402,25 +402,29 @@ body.is-scrolled .discript{
     filter: saturate(2) brightness(1);
     }
 
-    .city{
-        font-size: 15vw;
-    }
 }
 
 @media (max-width: 480px){
     body.is-scrolled .photo-wrap{
-    top: 30vh;          /* 위쪽으로 살짝 */
+    top: 15vh;          /* 위쪽으로 살짝 */
 
     left: 2vw;            
     transform: translate(0, -50%) scaleX(1);
 
-    width: 60vw;
+    width: 68vw;
     }
+
     body.is-scrolled .discript{
     top: 84vh;
     width: 70vw;
     font-size: 10px;
     }
+    body.is-scrolled .poolname{
+        top: 5vh;
+
+    }
+
+
 }
 
 
