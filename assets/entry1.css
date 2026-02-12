@@ -405,15 +405,6 @@ body.is-scrolled .discript{
     .city{
         font-size: 15vw;
     }
-    body.is-scrolled .city{
-    
-    }
-    .leftlist{
-
-    }
-    .discript{
-
-    }
 }
 
 @media (max-width: 480px){
@@ -424,9 +415,15 @@ body.is-scrolled .discript{
     transform: translate(0, -50%) scaleX(1);
 
     width: 60vw;
+    }
+    .body.is-scrolled .discript{
+    top: 84vh;
+    width: 70vw;
+    font-size: 10px;
+    }
 }
 
-}
+
 
 @font-face {
     font-family: "VCRMono";
