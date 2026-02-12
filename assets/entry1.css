@@ -423,6 +423,9 @@ body.is-scrolled .discript{
         top: 13vh;
 
     }
+    p{
+        font-size: 8px;
+    }
 
 
 
