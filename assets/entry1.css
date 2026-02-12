@@ -416,8 +416,16 @@ body.is-scrolled .discript{
     }
 }
 
-@media (max-width: 800px){
-    
+@media (max-width: 480px){
+    .body.is-scrolled .photo-wrap{
+    top: 30vh;          /* 위쪽으로 살짝 */
+
+    left: 2vw;            
+    transform: translate(0, -50%) scaleX(1);
+
+    width: 60vw;
+}
+
 }
 
 @font-face {
