@@ -4,8 +4,6 @@ body{
 
 }
 
-.discript{ outline: 2px solid red; }
-canvas, .canvas{ outline: 2px solid lime; }
 
 header{
   position: fixed;
