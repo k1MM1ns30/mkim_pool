@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ✅ 3D는 canvas가 있을 때만
   const stage = document.querySelector(".canvas");
+
+  // (추가) 모바일 드래그에서 "드래그 후 클릭" 막기용 플래그
+  let suppressNextTap = false;
+
   if (stage) {
     const max = 30;
     const persp = 1000;
@@ -29,21 +33,90 @@ document.addEventListener("DOMContentLoaded", () => {
       rafId = requestAnimationFrame(animate);
     }
 
-    stage.addEventListener("mousemove", (e) => {
-      const r = stage.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top) / r.height;
+    // ✅ 데스크탑(hover 가능)일 때만 mousemove 3D 사용
+    const canHover = window.matchMedia("(hover: hover)").matches;
 
-      targetRY = (x - 0.5) * (max * 2);
-      targetRX = -(y - 0.5) * (max * 2);
+    if (canHover) {
+      stage.addEventListener("mousemove", (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+
+        targetRY = (x - 0.5) * (max * 2);
+        targetRX = -(y - 0.5) * (max * 2);
+
+        if (!rafId) rafId = requestAnimationFrame(animate);
+      });
+
+      stage.addEventListener("mouseleave", () => {
+        targetRX = 0;
+        targetRY = 0;
+      });
+    }
+
+    // ✅ 모바일(<=480px)에서는 드래그(pointer)로 3D 회전
+    const mqMobile = window.matchMedia("(max-width: 480px)");
+
+    let dragging = false;
+    let lastX = 0, lastY = 0;
+    let moved = 0;
+    const DRAG_THRESHOLD = 8;   // 이 이상 움직이면 "드래그"로 판단
+    const SENS = 0.18;          // 감도(원하는 대로 조절)
+
+    function onDown(e) {
+      if (!mqMobile.matches) return;
+
+      dragging = true;
+      moved = 0;
+      suppressNextTap = false;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      // pointer 캡처
+      stage.setPointerCapture?.(e.pointerId);
 
       if (!rafId) rafId = requestAnimationFrame(animate);
-    });
+    }
 
-    stage.addEventListener("mouseleave", () => {
-      targetRX = 0;
-      targetRY = 0;
-    });
+    function onMove(e) {
+      if (!mqMobile.matches || !dragging) return;
+
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      moved += Math.abs(dx) + Math.abs(dy);
+
+      // dy 위아래 -> rotateX (방향 반대로)
+      targetRX = Math.max(-max, Math.min(max, targetRX - dy * SENS));
+      targetRY = Math.max(-max, Math.min(max, targetRY + dx * SENS));
+
+      if (moved > DRAG_THRESHOLD) {
+        // 드래그로 회전했다면, 그 손가락 떼는 순간 발생할 click을 막기
+        suppressNextTap = true;
+      }
+    }
+
+    function onUp(e) {
+      if (!mqMobile.matches) return;
+
+      dragging = false;
+
+      // 원위치로 돌아가게 하고 싶으면 켜
+      // targetRX = 0;
+      // targetRY = 0;
+
+      // suppressNextTap은 바로 끄면 click 이벤트보다 빨리 풀릴 수 있어서 약간 지연
+      if (suppressNextTap) {
+        setTimeout(() => { suppressNextTap = false; }, 0);
+      }
+    }
+
+    stage.addEventListener("pointerdown", onDown, { passive: true });
+    stage.addEventListener("pointermove", onMove, { passive: true });
+    stage.addEventListener("pointerup", onUp, { passive: true });
+    stage.addEventListener("pointercancel", onUp, { passive: true });
   }
 
   // ✅ 2탭 로직은 canvas 유무랑 상관없이 실행
@@ -56,6 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
   links.forEach(link => {
     link.addEventListener("click", function(e) {
       if (!isTouch) return;
+
+      // ✅ (추가) 방금 드래그로 3D 돌린 다음 생긴 click이면 탭 처리/이동 둘 다 막기
+      if (suppressNextTap) {
+        e.preventDefault();
+        return;
+      }
 
       if (activeLink !== this) {
         e.preventDefault();
@@ -84,28 +163,26 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(l => l.classList.remove("is-active"));
     activeLink = null;
   }, { passive: true });
+
+  // ✅ lizard
   const lizard = document.querySelector(".lizard");
+  if (lizard) {
+    lizard.addEventListener("click", () => {
+      lizard.classList.toggle("is-visible");
+    });
+  }
 
-lizard.addEventListener("click", () => {
-  lizard.classList.toggle("is-visible");
-});
+  // ✅ 클릭 커서
+  document.addEventListener("pointerdown", () => {
+    document.body.classList.add("is-clicking");
+  });
 
-document.addEventListener("pointerdown", () => {
-  document.body.classList.add("is-clicking");
-});
+  document.addEventListener("pointerup", () => {
+    document.body.classList.remove("is-clicking");
+  });
 
-document.addEventListener("pointerup", () => {
-  document.body.classList.remove("is-clicking");
-});
-
-document.addEventListener("pointercancel", () => {
-  document.body.classList.remove("is-clicking");
-});
-
-
-  
-
-  
+  document.addEventListener("pointercancel", () => {
+    document.body.classList.remove("is-clicking");
+  });
 
 });
-

@@ -289,6 +289,30 @@ p{
 
 
 
+@media (max-width: 480px){
+
+  /* ✅ 드래그로 3D 회전 + 탭도 가능하게 */
+  .canvas{
+    touch-action: pan-y; /* 세로 스크롤은 살리고, 가로/드래그는 우리가 컨트롤 */
+  }
+
+  /* 모바일은 hover 없으니까 hover 효과는 사실상 의미 없음(남겨도 무방) */
+  .imgs a:hover{
+    transform: none;
+    filter: none;
+  }
+
+  /* ✅ 탭해서 확대되는 상태 */
+  .imgs a.is-active{
+    transform: scale(2);
+    filter: saturate(2) brightness(1);
+  }
+}
+
+
+
+
+
 /* 모바일에서 JS가 붙여줄 클래스 */
 .imgs a.is-active{
   transform: scale(4);
