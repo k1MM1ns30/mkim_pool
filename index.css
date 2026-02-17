@@ -161,7 +161,7 @@ p{
 
 .canvas{
     position: fixed;
-    inset: 0; /*이거댐에 캔버스가 웹페이지 전체영역쓰고있음*/
+    inset: 0; 
     
 
     perspective: 100vh; 
@@ -169,7 +169,7 @@ p{
     
     transform-style: preserve-3d;
     will-change: transform;
-    transform: translateZ(0); /* GPU 타게 하는 흔한 트릭 */
+    transform: translateZ(0);
     
 
 }
@@ -182,7 +182,7 @@ p{
 
     opacity: 0;
     transition: opacity 500ms ease;
-    cursor: pointer; /* 클릭 가능 표시 */
+    cursor: pointer; 
 
     filter: drop-shadow(0 0 1em rgba(52, 255, 245, 0.833));
 }
@@ -268,6 +268,9 @@ p{
 }
 
 
+
+
+
 @media (max-width: 800px){
     .pagediscript{
         font-size: 8px;
@@ -281,7 +284,7 @@ p{
     }
 
     .imgs a.is-active{
-    transform: scale(4);
+    transform: scale(1.5);
     filter: saturate(2) brightness(1);
     }
 }
@@ -291,33 +294,76 @@ p{
 
 @media (max-width: 480px){
 
-  /* ✅ 드래그로 3D 회전 + 탭도 가능하게 */
+ 
   .canvas{
     touch-action: pan-y; /* 세로 스크롤은 살리고, 가로/드래그는 우리가 컨트롤 */
   }
 
-  /* 모바일은 hover 없으니까 hover 효과는 사실상 의미 없음(남겨도 무방) */
+ 
   .imgs a:hover{
     transform: none;
     filter: none;
   }
 
-  /* ✅ 탭해서 확대되는 상태 */
+ 
   .imgs a.is-active{
-    transform: scale(2);
+    transform: scale(1.5);
     filter: saturate(2) brightness(1);
   }
+    .img1{
+        width: 15vw;
+        left: 10vw;
+        top: 30vh;
+    }
+    .img2{
+        width: 16vw;
+        left: 25vw;
+        top: 12vh;
+        
+    }
+    .img3{
+        width: 17vw;
+        left: 20vw;
+        top: 53vh;
+        
+    }
+    .img4{
+        width: 14vw;
+        left: 40vw;
+        top: 70vh;
+        
+    }
+    .img5{
+        width: 16vw;
+        left: 56vw;
+        top: 45vh;
+        
+        
+        
+    }
+    .img6{
+        width: 17vw;
+        left: 68vw;
+        top: 20vh;
+
+        
+        
+    }
+    .img7{
+        width: 15vw;
+        right: 8vw;
+        top: 36vh;
+        
+        
+    }
+
+
 }
 
 
 
 
 
-/* 모바일에서 JS가 붙여줄 클래스 */
-.imgs a.is-active{
-  transform: scale(4);
-  filter: saturate(2) brightness(1);
-}
 
 
 

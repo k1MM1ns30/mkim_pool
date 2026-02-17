@@ -62,10 +62,15 @@ h2{
     
 }
 
+h3{
+    font-family: "VCRMono";
+    color: rgb(0, 0, 255);
+    
+}
+
 p{
     font-family: Arial, Helvetica, sans-serif;
-    color: rgb(0, 0, 255);
-    font-size: 20px;
+    color: rgb(0, 0, 0);
 
 
 }
@@ -204,29 +209,59 @@ p{
 
 
 .city{
-    font-size: clamp(12px, 15vw, 15vw);
-
-
-    position: absolute;
-    top: 40vh;
-    left: 2vw;
-
-    transition: transform 550ms ease, font-size 550ms ease, top 550ms ease, left 550ms ease;
-    z-index: 10;
-    line-height: 0.6;
-    margin: 0;
-
-}
-
-body.is-scrolled .city{
     position: fixed;
-    top: 5vh;         
-    font-size: clamp(50px, 6vw, 6vw);
-
-
+    top: 5vh;   
+    left: 2vw;  
+        
+    font-size: clamp(50px, 3vw, 3vw);
     color: rgb(0,0,255);
+
+    margin: 0;
 }
 
+.poolname{
+    position: fixed;
+    top: 25vh;  
+    left: 2vw;    
+
+    width: 100%;
+
+
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 1em;
+
+    gap: 10vh;
+
+
+
+}
+
+.poolname h2{
+    line-height: 1.5em;
+    margin: 0;
+    font-size: clamp(15px, 1.5vw, 1.5vw);
+}
+
+.poolname p{
+    line-height: 1.5em;
+    margin: 0;
+    font-size: clamp(15px, 1.3vw, 1.3vw);
+}
+
+.condition{
+    margin-top: 10vh;
+    display: flex;
+    flex-wrap: column;
+
+    gap: 5vw;
+
+}
+
+.condition h3{
+    font-size: clamp(15px, 1.5vw, 1.5vw);
+}
 
 
 
@@ -302,35 +337,7 @@ body.is-scrolled .img1{
 
 
 
-.poolname{
 
-    font-size: clamp(10px, 5vw, 5vw);
-
-    position: absolute;
-    top: 30vh;
-    left: 2vw;
-
-
-
-    transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease, opacity 300ms ease;
-    z-index: -1;
-    line-height: 0.6;
-    line-height: 1em;
-
-    opacity: 0;
-
-}
-
-body.is-scrolled .poolname{
-    position: fixed;
-    top: 11.5vh;      
-
-    font-size: clamp(15px, 1.7vw, 1.7vw);
-
-    color: rgb(0, 0, 0);
-    opacity: 100%;;
-
-}
 
 
 .leftlist{
@@ -533,89 +540,48 @@ body.is-scrolled .discript{
         height: 100vh;
     }
 
-    .photo-wrap{
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1.5vw solid blue;
-
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.815);
-    }
 
 
-    body.is-scrolled .photo-wrap{
-    position: relative;
-    
-    top: 25vh;
-    left: 2vw;
-    transform: translate(0, 0);
-    width: 88vw;
-
-    max-width: none;
-    border: 1.5vw solid blue;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.815);
-    z-index: -10;
-    
-    }
-
-
-    body.is-scrolled .city{
-        top: 8vh;
-        font-size: 70px;
-
-    }
-
-    body.is-scrolled .discript{
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-
-    position: relative;
-    top: 28vh;
-    width: 90vw;
-    font-size: 5px;
-    right: 0;
-    left: 2vw;
-
-    max-width: none;
-
-    }
-
-    .d1i{
-        margin-top: 2vh;
-        box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
-        border: 1.5vw solid blue;
-        
-    }
-
-    .d2i{
-        box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
-        border: 1.5vw solid blue;
-    }
-
-
-    body.is-scrolled .poolname{
-        top: 12vh;
-        font-size: 16px;
-
-    }
-    
-    p{
-        font-size: 8px;
-    }
 
     .city{
-        top: 48%;
-    }
-
-    body.is-scrolled .city{
-        font-size: 50px;
-    }
-
-    body.is-scrolled .leftlist a{
-    font-size: 10px;
+        top: 7vh;
+        font-size: 28px;
 
     }
+
+    .poolname{
+    
+    position: fixed;
+    top: 17vh;  
+    left: 2vw;  
+    right: 2vw;  
+
+    width: 100%;
+
+    }
+
+     .poolname h2{
+    font-size: 18px;
+    }
+
+    .poolname p{
+    font-size: 13px;
+    }
+
+    .condition{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+
+    gap: 5vw;
+
+}
+
+.condition h3{
+    font-size: 13px
+}
+
+
 
 
 
@@ -634,5 +600,4 @@ body.is-scrolled .discript{
     font-family: "Mine";
     src: url("../assets/Minecraft\ 2.ttf") format("truetype");
 }
-
 
