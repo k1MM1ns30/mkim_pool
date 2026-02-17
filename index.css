@@ -96,14 +96,17 @@ p{
 .menulist{
     position: fixed;
     top:0;
-    left:0;
-    width: 100%;
+    right:0;
+    width: 30vw;
     height: 100%;
 
     background-color: rgb(0,0,255);
     color: rgb(255,255,255);
 
     height: calc(var(--real-vh, 1vh) * 100); /* ✅ var 없으면 1vh 사용 */
+
+    transform: translateX(100%);   /* 처음엔 화면 밖 */
+    transition: transform 0.35s ease;
 
     
 
@@ -113,7 +116,7 @@ p{
     padding-left: 5%;
     padding-right: 5%;
     list-style: none;
-    font-size: 40px;
+    font-size: 30px;
     
     line-height: 2em;
 }
@@ -126,6 +129,10 @@ p{
   position: relative;
   z-index: 999; /* menulist 위에 뜨게 */
 
+}
+
+.menubtn[open] .menulist{
+  transform: translateX(0);
 }
 
 .menulist a{
@@ -147,7 +154,7 @@ p{
 
 
     font-family: "VCRMono";
-    font-size: 15px;
+    font-size: 10px;
     color: rgb(255,255,255);
 
     padding-left: 5%;
@@ -297,6 +304,10 @@ p{
  
   .canvas{
     touch-action: pan-y; /* 세로 스크롤은 살리고, 가로/드래그는 우리가 컨트롤 */
+  }
+
+  .menulist{
+    width: 100%;
   }
 
  

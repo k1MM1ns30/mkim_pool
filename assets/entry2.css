@@ -119,14 +119,17 @@ p{
 .menulist{
     position: fixed;
     top:0;
-    left:0;
-    width: 100vw;
-    height: 100vh;
+    right:0;
+    width: 30vw;
+    height: 100%;
 
     background-color: rgb(0,0,255);
     color: rgb(255,255,255);
 
-    height: calc(var(--real-vh, 1vh) * 100);
+    height: calc(var(--real-vh, 1vh) * 100); /* ✅ var 없으면 1vh 사용 */
+
+    transform: translateX(100%);   /* 처음엔 화면 밖 */
+    transition: transform 0.35s ease;
 
     
 
@@ -150,6 +153,9 @@ p{
   z-index: 999;
 
 }
+.menubtn[open] .menulist{
+  transform: translateX(0);
+}
 
 .menulist a{
     display: block;
@@ -170,7 +176,7 @@ p{
 
 
     font-family: "VCRMono";
-    font-size: 15px;
+    font-size: 10px;
     color: rgb(255,255,255);
 
     padding-left: 5%;
@@ -491,11 +497,11 @@ body.is-scrolled .discript{
     
     filter:
     grayscale(100%)
-    invert(60%)
-    contrast(130%)
-    brightness(110%)
-    sepia(80%)
-    hue-rotate(189deg)
+    invert(35%)
+    contrast(170%)
+    brightness(100%)
+    sepia(100%)
+    hue-rotate(193deg)
     saturate(650%);
 
     border-radius: 0.5em;
@@ -532,6 +538,10 @@ body.is-scrolled .discript{
         width: 100%;
         height: 100vh;
     }
+
+    .menulist{
+    width: 100%;
+  }
 
     .photo-wrap{
     left: 50%;
