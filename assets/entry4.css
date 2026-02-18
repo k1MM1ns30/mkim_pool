@@ -540,7 +540,7 @@ body.is-scrolled .discript{
     }
 
     .menulist{
-    width: 100%;
+    width: 100vw;
   }
 
     .photo-wrap{
@@ -578,7 +578,7 @@ body.is-scrolled .discript{
     body.is-scrolled .discript{
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 8vh;
 
     position: relative;
     top: 28vh;
@@ -630,6 +630,19 @@ body.is-scrolled .discript{
 
    .d3{
         margin-bottom: 10vh;
+    }
+
+    .d3 h2{
+        margin-bottom: 5vh;
+    }
+
+    .d3 iframe{
+        width: 60vw;
+        height: 30vw;
+    }
+
+    .indent{
+        margin-left: 6em;
     }
 
 

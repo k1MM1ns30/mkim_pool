@@ -27,7 +27,7 @@ canvas, .canvas, .imgs, .imgs *{
 }
 
 .indent{
-  margin-left: 5.3em;
+  margin-left: 6em;
 }
 
 
@@ -593,7 +593,6 @@ body.is-scrolled .discript{
 
     .d1i{
         margin-top: 2vh;
-        width: 80vw;
         box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
         border: 1.5vw solid blue;
         
