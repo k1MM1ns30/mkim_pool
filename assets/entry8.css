@@ -584,6 +584,7 @@ body.is-scrolled .discript{
     flex-direction: column;
 
     gap: 5vw;
+    margin-bottom: 3vh;
 
 }
 
