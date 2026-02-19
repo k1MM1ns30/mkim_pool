@@ -251,7 +251,7 @@ body.is-scrolled .city{
 
     border: 0.7vw solid blue;
     border-radius: 0.5em;  
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
 
 
     will-change: transform, left, top, width, height;
@@ -290,7 +290,7 @@ body.is-scrolled .photo-wrap{
 
   border: 0.7vw solid blue;
   border-radius: 0.5em;
-  box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
 }
 
 body.is-scrolled .img1{
@@ -425,25 +425,36 @@ body.is-scrolled .discript{
     line-height: 2em;
     background: white;
 
+    overflow: hidden;
+
   
 }
 
 .d1i{
-    display: flex;
-    flex-wrap: wrap;
-    border: 0.7vw solid blue;
-    border-radius: 0.5em;
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+  display: flex;
+  flex-wrap: nowrap;           /* 한 줄 유지 */
+  align-items: stretch;
 
-    width: 60vw;
-    margin-top: 10vh;
-    margin-bottom: 2vh;
+  height: 30vh;                /* 프레임 높이 고정 */
+  width: min(60vw, 100%);      /* 화면 대비 가로 유지 + 너무 커지면 제한 */
+  overflow: hidden;            /* 프레임 밖 잘라냄 */
+
+  border: 0.7vw solid blue;
+  border-radius: 0.5em;
+
+
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  box-sizing: border-box;
 }
 
+/* 이미지: 프레임 높이(30vh)에 맞추고, 가로는 사진 비율대로 */
 .d1i img{
-    width: 15vw;
-    height: auto;
-    overflow: hidden;
+  height: 100%;
+  width: auto;
+  display: block;              /* 이미지 아래/옆 공백 방지 */
+  object-fit: cover;           /* 프레임 안 꽉 채우기 + 잘림 허용 */
+  flex: 0 0 auto;              /* 이미지가 늘어나며 여백 만들지 않게 */
 }
 
 .d1i .img_4{
@@ -478,7 +489,7 @@ body.is-scrolled .discript{
     flex-wrap: wrap;
     border: 0.7vw solid blue;
     border-radius: 0.5em;
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
     margin-bottom: 2vh;
 }
 
@@ -549,7 +560,7 @@ body.is-scrolled .discript{
     transform: translate(-50%, -50%);
     border: 1.5vw solid blue;
 
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.815);
+
     }
 
 
@@ -563,7 +574,7 @@ body.is-scrolled .discript{
 
     max-width: none;
     border: 1.5vw solid blue;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.815);
+
     z-index: -10;
     
     }
@@ -593,17 +604,47 @@ body.is-scrolled .discript{
 
     .d1i{
         margin-top: 2vh;
-        box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
         border: 1.5vw solid blue;
+
+        display: inline-flex;    
+        flex-wrap: nowrap;
+        gap: 0;
+        overflow: hidden;
+
+        height: 40vw;           
+        width: fit-content;  
+        max-width: 90vw;        
+        box-sizing: border-box;
         
     }
 
     .d1i img{
-        width: 20vw;
+        width: 20vw;        
+        height: 100%;           
+        object-fit: cover;     
+        display: block;
+        flex: 0 0 auto;
     }
 
+    body.is-scrolled .d1i{
+        margin-top: 2vh;
+
+        border: 1.5vw solid blue;
+
+        width: 90vw;             
+        height: auto;            
+        aspect-ratio: 3 / 1;      
+        overflow: hidden;
+        
+    }
+
+    body.is-scrolled .d1i img{
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
     .d2i{
-        box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
+
         border: 1.5vw solid blue;
     }
 

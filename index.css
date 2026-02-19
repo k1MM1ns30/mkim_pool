@@ -38,7 +38,7 @@ p{
 
 .page-wrapper{
     width:100%;
-    min-height: 100vh;   /* 화면 높이만큼 차지 */
+    /* min-height: 100vh;   */
     position: relative;
 }
 
@@ -317,7 +317,7 @@ p{
   }
 
  
-  .imgs a.is-active{
+  .imgs a:active{
     transform: scale(1.5);
     filter: saturate(2) brightness(1);
   }

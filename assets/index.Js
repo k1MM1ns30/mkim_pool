@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('resize', setRealVh);
   window.addEventListener('orientationchange', setRealVh);
 
-  // ✅ 3D는 canvas가 있을 때만
   const stage = document.querySelector(".canvas");
 
-  // (추가) 모바일 드래그에서 "드래그 후 클릭" 막기용 플래그
+  // 드래그 후 잘못된 tap 방지용
   let suppressNextTap = false;
 
   if (stage) {
+
     const max = 30;
     const persp = 1000;
 
@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
       rafId = requestAnimationFrame(animate);
     }
 
-    // ✅ 데스크탑(hover 가능)일 때만 mousemove 3D 사용
     const canHover = window.matchMedia("(hover: hover)").matches;
 
+    // 데스크탑 mouse hover 3D
     if (canHover) {
       stage.addEventListener("mousemove", (e) => {
         const r = stage.getBoundingClientRect();
@@ -54,14 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // ✅ 모바일(<=480px)에서는 드래그(pointer)로 3D 회전
+    // 모바일 drag 3D
     const mqMobile = window.matchMedia("(max-width: 480px)");
 
     let dragging = false;
     let lastX = 0, lastY = 0;
     let moved = 0;
-    const DRAG_THRESHOLD = 8;   // 이 이상 움직이면 "드래그"로 판단
-    const SENS = 0.18;          // 감도(원하는 대로 조절)
+
+    const DRAG_THRESHOLD = 8;
+    const SENS = 0.18;
 
     function onDown(e) {
       if (!mqMobile.matches) return;
@@ -69,10 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
       dragging = true;
       moved = 0;
       suppressNextTap = false;
+
       lastX = e.clientX;
       lastY = e.clientY;
 
-      // pointer 캡처
       stage.setPointerCapture?.(e.pointerId);
 
       if (!rafId) rafId = requestAnimationFrame(animate);
@@ -83,17 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const dx = e.clientX - lastX;
       const dy = e.clientY - lastY;
+
       lastX = e.clientX;
       lastY = e.clientY;
 
       moved += Math.abs(dx) + Math.abs(dy);
 
-      // dy 위아래 -> rotateX (방향 반대로)
       targetRX = Math.max(-max, Math.min(max, targetRX - dy * SENS));
       targetRY = Math.max(-max, Math.min(max, targetRY + dx * SENS));
 
       if (moved > DRAG_THRESHOLD) {
-        // 드래그로 회전했다면, 그 손가락 떼는 순간 발생할 click을 막기
         suppressNextTap = true;
       }
     }
@@ -103,13 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       dragging = false;
 
-      // 원위치로 돌아가게 하고 싶으면 켜
-      // targetRX = 0;
-      // targetRY = 0;
-
-      // suppressNextTap은 바로 끄면 click 이벤트보다 빨리 풀릴 수 있어서 약간 지연
       if (suppressNextTap) {
-        setTimeout(() => { suppressNextTap = false; }, 0);
+        setTimeout(() => {
+          suppressNextTap = false;
+        }, 0);
       }
     }
 
@@ -119,60 +116,32 @@ document.addEventListener("DOMContentLoaded", () => {
     stage.addEventListener("pointercancel", onUp, { passive: true });
   }
 
-  // ✅ 2탭 로직은 canvas 유무랑 상관없이 실행
-  const links = document.querySelectorAll(".imgs a");
-  if (!links.length) return;
-
-  let activeLink = null;
+  // ✅ 모바일에서 사진 누르면 손 떼는 순간 바로 이동
   const isTouch = window.matchMedia("(hover: none)").matches;
 
-  links.forEach(link => {
-    link.addEventListener("click", function(e) {
+  document.querySelectorAll(".imgs a").forEach(a => {
+
+    a.addEventListener("pointerup", (e) => {
+
       if (!isTouch) return;
 
-      // ✅ (추가) 방금 드래그로 3D 돌린 다음 생긴 click이면 탭 처리/이동 둘 다 막기
+      // 드래그 직후 tap이면 이동 금지
       if (suppressNextTap) {
         e.preventDefault();
         return;
       }
 
-      if (activeLink !== this) {
-        e.preventDefault();
-        links.forEach(l => l.classList.remove("is-active"));
-        this.classList.add("is-active");
-        activeLink = this;
-      } else {
-        this.classList.remove("is-active");
-        activeLink = null; // 두 번째 탭은 이동 허용
+      const href = a.getAttribute("href");
+      if (href) {
+        window.location.href = href;
       }
+
     });
+
   });
 
-  // ✅ 바깥 탭 해제 (캡처링으로 더 안정적으로)
-  document.addEventListener("pointerdown", (e) => {
-    if (!isTouch) return;
-    if (!e.target.closest(".imgs a")) {
-      links.forEach(l => l.classList.remove("is-active"));
-      activeLink = null;
-    }
-  }, true);
 
-  // ✅ 스크롤하면 해제
-  window.addEventListener("scroll", () => {
-    if (!isTouch) return;
-    links.forEach(l => l.classList.remove("is-active"));
-    activeLink = null;
-  }, { passive: true });
-
-  // ✅ lizard
-  const lizard = document.querySelector(".lizard");
-  if (lizard) {
-    lizard.addEventListener("click", () => {
-      lizard.classList.toggle("is-visible");
-    });
-  }
-
-  // ✅ 클릭 커서
+  // 클릭 커서 효과
   document.addEventListener("pointerdown", () => {
     document.body.classList.add("is-clicking");
   });
@@ -184,5 +153,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("pointercancel", () => {
     document.body.classList.remove("is-clicking");
   });
+
+
+  // lizard toggle (그대로 유지)
+  const lizard = document.querySelector(".lizard");
+
+  if (lizard) {
+    lizard.addEventListener("click", () => {
+      lizard.classList.toggle("is-visible");
+    });
+  }
 
 });

@@ -286,7 +286,7 @@ p{
 
     border: 0.7vw solid blue;
     border-radius: 0.5em;  
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
 
 
     will-change: transform, left, top, width, height;
@@ -325,7 +325,7 @@ body.is-scrolled .photo-wrap{
 
   border: 0.7vw solid blue;
   border-radius: 0.5em;
-  box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
 }
 
 body.is-scrolled .img1{
@@ -440,7 +440,7 @@ body.is-scrolled .discript{
     flex-wrap: wrap;
     border: 0.7vw solid blue;
     border-radius: 0.5em;
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
 
     width: 60vw;
     margin-top: 10vh;
@@ -485,7 +485,7 @@ body.is-scrolled .discript{
     flex-wrap: wrap;
     border: 0.7vw solid blue;
     border-radius: 0.5em;
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
     margin-bottom: 2vh;
 }
 
