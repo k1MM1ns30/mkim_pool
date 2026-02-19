@@ -83,7 +83,7 @@ p{
 .title{
     font-family: "VCRMono";
     color: rgb(0,0,0);
-    font-size: clamp(10px, 5vw, 5vw);
+    font-size: 30px;
     text-decoration: none;
     
 }
@@ -489,7 +489,11 @@ body.is-scrolled .leftlist{
 
     .menulist{
     width: 100%;
-  }
+    }
+
+    .title{
+        font-size: clamp(10px, 5vw, 5vw);
+    }
 
 
     .type-layout{
