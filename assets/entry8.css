@@ -83,7 +83,7 @@ p{
 .title{
     font-family: "VCRMono";
     color: rgb(0,0,0);
-    font-size: 30px;
+    font-size: clamp(10px, 5vw, 5vw);
     text-decoration: none;
     
 }
@@ -396,124 +396,65 @@ body.is-scrolled .leftlist{
     transform: translateY(0);
 }
 
-
-
-
-.discript{
-    position: absolute;     
-    left: 30vw;
-    right: 0;
-    top: 3vh;
-    width: 68vw;       
-
-    display: flex;
-    flex-direction: column;
-    gap: 10vh;
-
-    opacity: 0;
-    transform: translateY(40vh);
-    transition: transform 450ms ease, opacity 450ms ease;
-    z-index: 50;
-}
-
-body.is-scrolled .discript{
-    position: relative;
-    opacity: 1;
-    transform: translateY(0);
-
-    margin-bottom: 20vh;
-}
-
-.discript .d1{
-    align-self: flex-start;
-    margin-bottom: 0;
-    /* width: 90%;
-    padding: 2%; */
-    line-height: 2em;
-    background: white;
-
+/* 전체 2컬럼 레이아웃 */
+.type-layout{
+  display: flex;
+  gap: 10vw;
+  padding-top: 18vh;     /* 헤더 아래로 내리기 */
+  padding-left: 2vw;
+  padding-right: 2vw;
+  box-sizing: border-box;
+  align-items: flex-start;
   
 }
 
-.d1i{
-    display: flex;
-    flex-wrap: wrap;
-    border: 0.7vw solid blue;
-    border-radius: 0.5em;
-
-
-    width: 60vw;
-    margin-top: 10vh;
-    margin-bottom: 2vh;
+/* 왼쪽 영역 */
+.type-left{
+  width: 55vw;           /* 왼쪽 폭 */
+  max-width: 700px;      /* 너무 커지지 않게 */
 }
 
-.d1i img{
-    width: 15vw;
-    height: auto;
-    overflow: hidden;
+.type-left .city{
+  position: static;      /* fixed 제거 */
+  margin: 0 0 5vh 0;
+  font-size: clamp(50px, 3vw, 3vw);
 }
 
-.d1i .img_4{
-    width: 50%;
+.type-left p{
+  font-size: clamp(15px, 1.3vw, 1.3vw);
+  line-height: 1.6em;
+  margin: 0 0 2vh 0;
 }
 
-.discript .d2{
-    display: flex;
-    flex-wrap: wrap;
-    align-self: flex-end; 
-    margin-top: 0;
-    margin-bottom: 0;
-    /* width: 80%;  
-    padding: 2%; */
-    line-height: 2em;
-    background: white;
+.type-left .ptype{
+  margin: 0;
+  font-size: clamp(15px, 1.5vw, 1.5vw);
 }
 
-.d2 p{
-    flex: 0 0 100%;
+/* 오른쪽 condition 컬럼 */
+.condition{
+  width: 35vw;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;   /* 세로로 */
+  gap: 5vh;
+  margin-top: 10vh;
 }
 
-.d2 img{
-    width: 50%;
-    height: auto;
-    display: block;
-    
+.condition h3{
+  margin: 0 0 0.8vh 0;
+  font-size: clamp(15px, 1.5vw, 1.5vw);
 }
 
-.d2i{
-    display: flex;
-    flex-wrap: wrap;
-    border: 0.7vw solid blue;
-    border-radius: 0.5em;
-
-    margin-bottom: 2vh;
+.condition p{
+  margin: 0;
+  line-height: 1.6em;
 }
 
-.discript .d3{
-    align-self: flex;
-    margin-top: 0;
-    /* width: 60%;
-    padding: 2%; */
-    line-height: 2em;
-    background: white;
-}
 
-.d3 iframe{
-    width: 40vw;
-    height: 20vw;
-    
-    filter:
-    grayscale(100%)
-    invert(60%)
-    contrast(130%)
-    brightness(110%)
-    sepia(80%)
-    hue-rotate(189deg)
-    saturate(650%);
 
-    border-radius: 0.5em;
 
-}
+
 
 @media (max-width: 800px){
     .pagediscript{
@@ -551,47 +492,39 @@ body.is-scrolled .discript{
   }
 
 
+    .type-layout{
+        flex-direction: column;
+        gap: 4vh;
+        padding-top: 10vh;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
 
+    .type-left, .condition{
+        width: 100%;
+        max-width: none;
+    }
 
-    .city{
-        top: 7vh;
+    .type-left .city{
         font-size: 28px;
-
     }
 
-    .poolname{
-    
-    position: fixed;
-    top: 17vh;  
-    left: 2vw;  
-    right: 2vw;  
-
-    width: 100%;
-
+    .type-left p{
+        font-size: 13px;
     }
 
-     .poolname h2{
-    font-size: 18px;
+    .type-left .ptype{
+        font-size: 18px;
     }
 
-    .poolname p{
-    font-size: 13px;
+    .condition h3{
+        font-size: 13px;
     }
 
     .condition{
-    margin-top: 3vh;
-    display: flex;
-    flex-direction: column;
-
-    gap: 5vw;
-    margin-bottom: 3vh;
-
-}
-
-.condition h3{
-    font-size: 13px
-}
-
+        gap: 3vh;
+        margin-top: 3vh;
+    }
 
 
 

@@ -78,7 +78,7 @@ p{
 .title{
     font-family: "VCRMono";
     color: rgb(0,0,0);
-    font-size: 30px;
+    font-size: clamp(10px, 5vw, 5vw);
     text-decoration: none;
     
 }
