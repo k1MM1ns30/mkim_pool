@@ -310,6 +310,10 @@ p{
     width: 100%;
   }
 
+  .title{
+        font-size: clamp(10px, 5vw, 5vw);
+    }
+
  
   .imgs a:hover{
     transform: none;
