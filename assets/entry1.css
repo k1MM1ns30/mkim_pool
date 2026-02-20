@@ -254,7 +254,6 @@ body.is-scrolled .city{
 
     border: 0.7vw solid blue;
     border-radius: 0.5em;  
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
 
 
     will-change: transform, left, top, width, height;
@@ -293,7 +292,6 @@ body.is-scrolled .photo-wrap{
 
   border: 0.7vw solid blue;
   border-radius: 0.5em;
-  box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
 }
 
 body.is-scrolled .img1{
@@ -486,7 +484,7 @@ body.is-scrolled .discript{
     flex-wrap: wrap;
     border: 0.7vw solid blue;
     border-radius: 0.5em;
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.815);
+
     margin-bottom: 2vh;
 }
 
@@ -561,7 +559,6 @@ body.is-scrolled .discript{
     transform: translate(-50%, -50%);
     border: 1.5vw solid blue;
 
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.815);
     }
 
 
@@ -648,7 +645,6 @@ body.is-scrolled .discript{
     
 
     .d2i{
-        box-shadow: 1em 1em 1em rgba(0,0,0,0.815);
         border: 1.5vw solid blue;
     }
 
