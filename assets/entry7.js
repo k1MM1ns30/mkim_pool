@@ -1,11 +1,18 @@
-const THRESHOLD = 80; // 이만큼 스크롤하면 2번 레이아웃로 전환
+const THRESHOLD = 80;
+let ticking = false;
 
 function onScroll() {
-  document.body.classList.toggle("is-scrolled", window.scrollY > THRESHOLD);
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      document.body.classList.toggle("is-scrolled", window.scrollY > THRESHOLD);
+      ticking = false;
+    });
+    ticking = true;
+  }
 }
 
-window.addEventListener("scroll", onScroll);
-onScroll(); // 처음 로드 시에도 체크
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
 
 
 document.addEventListener("pointerdown", () => {

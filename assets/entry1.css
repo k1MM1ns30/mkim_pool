@@ -424,9 +424,13 @@ body.is-scrolled .discript{
     /* width: 90%;
     padding: 2%; */
     line-height: 2em;
-    background: white;
 
-  
+
+}
+
+.discript .d1 h2,
+.discript .d1 p {
+    background: white;
 }
 
 .d1i{

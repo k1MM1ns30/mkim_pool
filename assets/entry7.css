@@ -217,7 +217,8 @@ p{
     top: 40vh;
     left: 2vw;
 
-    transition: transform 550ms ease, font-size 550ms ease, top 550ms ease, left 550ms ease;
+    transition: transform 550ms ease, opacity 550ms ease;
+    will-change: transform, opacity;
     z-index: 10;
     line-height: 0.6;
     margin: 0;
@@ -254,9 +255,9 @@ body.is-scrolled .city{
 
 
 
-    will-change: transform, left, top, width, height;
+    will-change: transform, opacity;
 
-    transition: transform 550ms ease, width 550ms ease, top 550ms ease, left 550ms ease, height 550ms ease;
+    transition: transform 550ms ease, opacity 550ms ease;
 }
 
 
@@ -318,7 +319,8 @@ body.is-scrolled .img1{
 
 
 
-    transition: transform 450ms ease, font-size 450ms ease, top 450ms ease, left 450ms ease, opacity 300ms ease;
+    transition: transform 450ms ease, opacity 300ms ease;
+    will-change: transform, opacity;
     z-index: -1;
     line-height: 0.6;
     line-height: 1em;
@@ -349,7 +351,8 @@ body.is-scrolled .poolname{
     flex-direction: column;
 
     transform: translateY(40vh);
-    transition: transform 450ms ease, opacity 450ms ease, bottom 450ms ease;
+    transition: transform 450ms ease, opacity 450ms ease;
+    will-change: transform, opacity;
     z-index: 50;
 }
 
@@ -406,6 +409,7 @@ body.is-scrolled .leftlist{
     opacity: 0;
     transform: translateY(40vh);
     transition: transform 450ms ease, opacity 450ms ease;
+    will-change: transform, opacity;
     z-index: 50;
 }
 
@@ -423,9 +427,13 @@ body.is-scrolled .discript{
     /* width: 90%;
     padding: 2%; */
     line-height: 2em;
-    background: white;
 
-  
+
+}
+
+.discript .d1 h2,
+.discript .d1 p {
+    background: white;
 }
 
 .d1i{
